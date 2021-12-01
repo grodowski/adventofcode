@@ -1,9 +1,10 @@
 input = File.read("input").split("\n").map(&:to_i)
 puts "Input size #{input.size}"
 
+puts "2 measurements"
 num_increases = 0
-input.drop(1).each_with_index do |measurement, idx|
-  num_increases += 1 if measurement > input[idx]
+input.each_cons(2) do |measurements|
+  num_increases += 1 if measurements[0] < measurements[1]
 end
 puts "Answer 1 #{num_increases}"
 
